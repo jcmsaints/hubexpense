@@ -11,5 +11,10 @@ app.get("/", (req, res) => {
 app.get("/expense", (req, res) => {
   res.render("expense");
 });
-
+app.get("/account", (req, res) => {
+  res.render("account");
+});
+app.get("/newexpense", (req, res) => {
+  res.render("newexpense");
+});
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

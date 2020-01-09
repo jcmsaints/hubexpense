@@ -1,0 +1,38 @@
+<%- contentFor('body') %>
+
+<div class="row jumbotron">
+    <div class="col-lg-6">
+        <label for="expenseInput">Total de Despesas Mensais</label>
+        <div id="expenseInput" class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="greenSimbol input-group-text"><b>€</b></span>
+            </div>
+            <div class="input-group-append">
+                <span class="inputValue input-group-text">00.00</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div id="chart"></div>
+        <script>
+            var chart = c3.generate({
+                data: {
+                    // iris data from R
+                    columns: [["Sem despesas", 30]],
+                    type: "pie",
+                    onclick: function (d, i) {
+                        console.log("onclick", d, i);
+                    },
+                    onmouseover: function (d, i) {
+                        console.log("onmouseover", d, i);
+                    },
+                    onmouseout: function (d, i) {
+                        console.log("onmouseout", d, i);
+                    }
+                }
+            });
+        </script>
+    </div>
+</div>
