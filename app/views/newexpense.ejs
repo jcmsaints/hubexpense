@@ -1,38 +1,41 @@
 <%- contentFor('body') %>
-
-<div class="row jumbotron">
-    <div class="col-lg-6">
-        <label for="expenseInput">Total de Despesas Mensais</label>
-        <div id="expenseInput" class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="greenSimbol input-group-text"><b>€</b></span>
-            </div>
-            <div class="input-group-append">
-                <span class="inputValue input-group-text">00.00</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-6">
-        <div id="chart"></div>
-        <script>
-            var chart = c3.generate({
-                data: {
-                    // iris data from R
-                    columns: [["Sem despesas", 30]],
-                    type: "pie",
-                    onclick: function (d, i) {
-                        console.log("onclick", d, i);
-                    },
-                    onmouseover: function (d, i) {
-                        console.log("onmouseover", d, i);
-                    },
-                    onmouseout: function (d, i) {
-                        console.log("onmouseout", d, i);
-                    }
-                }
-            });
-        </script>
-    </div>
-</div>
+<form
+  style="
+margin-top: 5%;
+margin-left: 3%;
+margin-right: 3%;
+margin-bottom: 5%;
+"
+>
+  <div class="form-group">
+    <label for="expense">Despesa(*)</label>
+    <input
+      type="number"
+      class="form-control required"
+      id="expense"
+      placeholder="5.00"
+    />
+  </div>
+  <div class="form-group">
+    <label for="expenseCategory">Categoria Despesa(*)</label>
+    <select class="form-control" id="expenseCategory">
+      <option>Renda</option>
+      <option>Saúde</option>
+      <option>Comida</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="description">Descrição</label>
+    <textarea class="form-control" id="description" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="bill">Foto de Fatura</label>
+    <input type="file" class="form-control-file" id="bill" />
+  </div>
+  <div class="form-group">
+    <label>* - campo obrigatório</label>
+  </div>
+  <div class="form-group">
+    <button type="button" class="btn btn-success">Criar</button>
+  </div>
+</form>
