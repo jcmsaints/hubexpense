@@ -4,7 +4,35 @@
     <meta charset="UTF-8" />
     <title>HUB Expense</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- App Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="img/logoSmall.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="img/logoSmall.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="img/icons/apple-icon-72x72.png"
+    />
+    <link rel="apple-touch-icon" sizes="76x76" href="img/logoSmall.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/logoSmall.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="img/logoSmall.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/logoSmall.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="img/logoSmall.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/logoSmall.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/img/logoSmall.png"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logoSmall.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="img/logoSmall.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/logoSmall.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="img/logoSmall.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- Imports -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.11/c3.min.js"></script>
     <link
@@ -78,5 +106,24 @@
         </a>
       </div>
     </main>
+    <!-- Service worker registration -->
+    <script type="text/javascript">
+      if (navigator.serviceWorker.controller) {
+        console.log(
+          "[PWA Builder] active service worker found, no need to register"
+        );
+      } else {
+        //Register the ServiceWorker
+        navigator.serviceWorker
+          .register("pwabuilder-sw.js", {
+            scope: "./"
+          })
+          .then(function(reg) {
+            console.log(
+              "Service worker has been registered for scope:" + reg.scope
+            );
+          });
+      }
+    </script>
   </body>
 </html>
