@@ -18,14 +18,12 @@ module.exports = function(app, passport, users) {
     console.log("OLA");
     console.log(req.body);
     console.log(req.body.name);
-    try {
-      users.push({
-        id: Date.now().toString(),
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-      });
-    } catch {}
+    users.push({
+      id: Date.now().toString(),
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password
+    });
     console.log(users);
     res.redirect("/login");
   });
