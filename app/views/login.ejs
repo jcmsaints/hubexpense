@@ -1,0 +1,36 @@
+<%- contentFor('body') %>
+
+<div class="row jumbotron">
+  <div class="col-lg-6 text-center">
+    <h2>Bem Vindo</h2>
+    <br />
+    <label>Por favor faça login ou registe-se</label>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <form class="contentInBox">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <div class="form-group form-check">
+        ou <a href="/register"> Efectue o registo</a>
+      </div>
+      <button type="submit" class="btn btn-primary btn-right">Login</button>
+    </form>
+  </div>
+</div>

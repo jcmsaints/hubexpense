@@ -42,3 +42,10 @@ nav {
 footer {
   height: 50px;
 }
+.contentInBox {
+  margin-right: 3%;
+  margin-left: 3%;
+}
+.btn-right {
+  float: right;
+}

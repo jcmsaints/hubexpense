@@ -11,6 +11,12 @@ app.get("/", (req, res) => {
 app.get("/expense", (req, res) => {
   res.render("expense");
 });
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+app.get("/login", (req, res) => {
+  res.render("login");
+});
 app.get("/newexpense", (req, res) => {
   res.render("newexpense");
 });
