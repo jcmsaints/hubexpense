@@ -4,6 +4,7 @@
   <a href="/newexpense" type="button" class="btn btn-success"><i class="fas fa-plus"></i> Criar Despesa</a>
 </div>
 </div>
+<%- include('components/dataTable', {teste: 'ola'}); %>
 <div class="row">
   <div class="col-lg-6">
     <table id="example" class="display" style="width:100%">
@@ -476,19 +477,7 @@
       </tbody>
     </table>
     <script>
-      $(document).ready(function() {
-        $("#example").DataTable({
-          scrollY: "300px",
-          scrollCollapse: true,
-          paging: false,
-          language: {
-        "search": "Pesquisa:",
-            "infoEmpty": "Sem resultados",            
-            "info": "Total de _MAX_ Resultados",
-            "infoFiltered": "(filtrado de _MAX_ total)"
-    }
-        });
-      });
+     addDataTable("#example"); 
     </script>
   </div>
 </div>

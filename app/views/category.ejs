@@ -1,9 +1,9 @@
 <%- contentFor('body') %>
 <div style="margin-top:1%;margin-right: 12%;">
   <div class="d-flex flex-row-reverse">
-    <a href="/newcategory" type="button" class="btn btn-success">
-      <i class="fas fa-plus"></i> Criar Categoria
-    </a href="/newcategory">
+    <a href="/newcategory" type="button" class="btn btn-success"
+      ><i class="fas fa-plus"></i> Criar Categoria</a
+    >
   </div>
 </div>
 <div class="row">
@@ -489,13 +489,7 @@
       </tfoot>
     </table>
     <script>
-      $(document).ready(function() {
-        $("#example").DataTable({
-          scrollY: "300px",
-          scrollCollapse: true,
-          paging: false
-        });
-      });
+      addDataTable("#example");
     </script>
   </div>
 </div>
