@@ -2,30 +2,25 @@
 
 <div class="row jumbotron">
   <div class="col-lg-6 text-center">
-    <h2>Bem Vindo</h2>
-    <br />
-    <label>Por favor faça login ou registe-se</label>
+    <h2>Login</h2>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-6">
-    <form class="contentInBox">
+    <form class="contentInBox" action="/login" method="POST">
       <div class="form-group">
-        <label for="exampleInputEmail1">Email</label>
+        <label for="email">Email</label>
         <input
           type="email"
           class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
+          id="email"
+          name="email"
+          required
         />
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-        />
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" required />
       </div>
       <div class="form-group form-check">
         ou <a href="/register"> Efectue o registo</a>
