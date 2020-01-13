@@ -23,7 +23,12 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-require("./routes/index.js")(app, passport, users);
+//controllers
+require("./controllers/indexController.js")(app, passport, users);
+require("./controllers/accountController.js")(app, passport, users);
+require("./controllers/authController.js")(app, passport, users);
+require("./controllers/categoryController.js")(app, passport, users);
+require("./controllers/expenseController.js")(app, passport, users);
 initializePassport(
   passport,
   email => users.find(user => user.email === email),

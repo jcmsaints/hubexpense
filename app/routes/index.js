@@ -1,6 +1,7 @@
 module.exports = function(app, passport, users) {
   //public
   //POST
+  //Auth
   app.post(
     "/login",
     checkNotAuthenticated,
@@ -10,31 +11,27 @@ module.exports = function(app, passport, users) {
       failureFlash: true
     })
   );
-  app.get("/logout", (req, res) => {
-    req.logOut();
-    res.redirect("/login");
-  });
   app.post("/register", async (req, res) => {
-    console.log("OLA");
-    console.log(req.body);
-    console.log(req.body.name);
     users.push({
       id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,
       password: req.body.password
     });
-    console.log(users);
     res.redirect("/login");
   });
   //GET
+  //Auth
   app.get("/register", (req, res) => {
     res.render("register");
   });
   app.get("/login", (req, res) => {
     res.render("login");
   });
-
+  app.get("/logout", (req, res) => {
+    req.logOut();
+    res.redirect("/login");
+  });
   //protected by auth
   app.get("/", checkAuthenticated, (req, res) => {
     res.render("home");
@@ -54,6 +51,8 @@ module.exports = function(app, passport, users) {
   app.get("/account", checkAuthenticated, (req, res) => {
     res.render("account");
   });
+
+  //Utils Auth Functions
   function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
