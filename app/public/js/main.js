@@ -25,6 +25,9 @@ function addDataTable(selector) {
   $(document).ready(function() {
     $(selector).DataTable({
       scrollY: "300px",
+      sScrollX: "100%",
+      sScrollXInner: "100%",
+      bScrollCollapse: true,
       scrollCollapse: true,
       paging: false,
       language: {
