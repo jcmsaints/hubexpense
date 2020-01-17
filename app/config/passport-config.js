@@ -1,29 +1,36 @@
 const LocalStrategy = require("passport-local").Strategy;
-
-function initialize(passport, getUserByEmail, getUserById) {
+const postRequest = require("../services/postRequest");
+const getRequest = require("../services/getRequest");
+function initialize(passport) {
   const authenticateUser = async (email, password, done) => {
-    const user = getUserByEmail(email);
-    if (user == null) {
-      return done(null, false, {
-        message: "Não existe nenhum utilizador registado com este email!"
-      });
+    function callbackSucess(data) {
+      return done(null, data.data.user);
     }
-
-    try {
-      if (password === user.password) {
-        return done(null, user);
-      } else {
-        return done(null, false, { message: "Password incorrecta" });
-      }
-    } catch (e) {
-      return done(e);
+    function callbackError(data) {
+      return done(null, false, { message: "Dados inválidos" });
     }
+    let formData = { identifier: email, password: password };
+    console.log(formData);
+    postRequest.postService(
+      "auth/local",
+      formData,
+      callbackSucess,
+      callbackError
+    );
   };
 
   passport.use(new LocalStrategy({ usernameField: "email" }, authenticateUser));
   passport.serializeUser((user, done) => done(null, user.id));
   passport.deserializeUser((id, done) => {
-    return done(null, getUserById(id));
+    function success(data) {
+      return done(null, data);
+    }
+
+    function reject(data) {
+      console.log(data);
+    }
+
+    getRequest.findAll(`users/${id}`, "", success, reject);
   });
 }
 

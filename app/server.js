@@ -29,9 +29,5 @@ require("./controllers/accountController.js")(app, passport, users);
 require("./controllers/authController.js")(app, passport, users);
 require("./controllers/categoryController.js")(app, passport, users);
 require("./controllers/expenseController.js")(app, passport, users);
-initializePassport(
-  passport,
-  email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
-);
+initializePassport(passport);
 app.listen(port, () => console.log(`A app está a correr no porto ${port}!`));

@@ -1,5 +1,6 @@
 const authGuard = require("../services/authGuard");
 const User = require("../dtos/user.js");
+const postRequest = require("../services/postRequest");
 module.exports = function(app, passport, users) {
   //public
   //POST
@@ -14,9 +15,15 @@ module.exports = function(app, passport, users) {
     })
   );
   app.post("/register", async (req, res) => {
-    users.push(new User(req.body));
-    console.log(users);
-    res.redirect("/login");
+    function resolve(data) {
+      res.redirect("/login");
+    }
+    function reject(data) {
+      console.log(data);
+    }
+    let user = new User(req.body);
+    users.push(user);
+    postRequest.postService("auth/local/register", user, resolve, reject);
   });
   //GET
   //Auth
